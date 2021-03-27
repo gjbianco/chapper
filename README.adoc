@@ -4,4 +4,4 @@ This is chapper: `<<(.*)>>`
 
 He finds reference IDs in your AsciiDoc files.
 He uses those to map out how your sections and chapters reference one another.
-Then, you can pipe that map into Mermaid.js to get a graphical representation.
+Then, you can pipe that map into https://mermaid-js.github.io/mermaid-live-editor[Mermaid.js] to get a graphical representation.
