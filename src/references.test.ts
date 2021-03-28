@@ -2,7 +2,7 @@ import {
   assertArrayIncludes,
   assertEquals,
 } from 'https://deno.land/std@0.90.0/testing/asserts.ts';
-import { findID, hasID } from './index.ts';
+import { findReferences, hasReferences } from './references.ts';
 
 const sampleWithIDs = `
 = sample adoc file
@@ -21,14 +21,14 @@ Doesn't actually run anything.
 `;
 
 Deno.test('finds ID tag', () => {
-  assertEquals(findID(sampleNoIDs), []);
-  assertArrayIncludes(findID(sampleWithIDs), [
+  assertEquals(findReferences(sampleNoIDs), []);
+  assertArrayIncludes(findReferences(sampleWithIDs), [
     'chp-intro-lecture',
     'phc-other-ge',
   ]);
 });
 
 Deno.test('checks if any IDs exist', () => {
-  assertEquals(hasID(sampleNoIDs), false);
-  assertEquals(hasID(sampleWithIDs), true);
+  assertEquals(hasReferences(sampleNoIDs), false);
+  assertEquals(hasReferences(sampleWithIDs), true);
 });

@@ -2,11 +2,11 @@ const REFERENCE_PATTERN = /<<(.*)>>/gi;
 
 // TODO user proper tsdoc syntax
 /**
- * Searches @param(input) for AsciiDoc IDs.
+ * Searches @param(input) for AsciiDoc references.
  *
- * @returns string[] containing de-duplicated list of IDs.
+ * @returns string[] containing de-duplicated list of references.
  */
-export function findID(input: string): string[] {
+export function findReferences(input: string): string[] {
   // TODO might be more efficient to use Pattern.exec?
   //      but that might require re-compiling the Pattern per file
   const foundIds = input.match(REFERENCE_PATTERN) ?? [];
@@ -18,8 +18,8 @@ export function findID(input: string): string[] {
 }
 
 /**
- * Checks @param(input) for an AsciiDoc ID.
+ * Checks @param(input) for an AsciiDoc reference.
  */
-export function hasID(input: string): boolean {
+export function hasReferences(input: string): boolean {
   return input.match(REFERENCE_PATTERN) !== null;
 }
