@@ -1,11 +1,4 @@
-const filenames = Deno.args;
-for (const filename of filenames) {
-  const file = await Deno.open(filename);
-  await Deno.copy(file, Deno.stdout);
-  file.close();
-}
-
-const ID_PATTERN = /<<(.*)>>/gi;
+const REFERENCE_PATTERN = /<<(.*)>>/gi;
 
 // TODO user proper tsdoc syntax
 /**
@@ -16,7 +9,7 @@ const ID_PATTERN = /<<(.*)>>/gi;
 export function findID(input: string): string[] {
   // TODO might be more efficient to use Pattern.exec?
   //      but that might require re-compiling the Pattern per file
-  const foundIds = input.match(ID_PATTERN) ?? [];
+  const foundIds = input.match(REFERENCE_PATTERN) ?? [];
   return foundIds
     .map((val) => val.replace('<<', '').replace('>>', ''))
     .filter((val, i, arr) => {
@@ -28,5 +21,5 @@ export function findID(input: string): string[] {
  * Checks @param(input) for an AsciiDoc ID.
  */
 export function hasID(input: string): boolean {
-  return input.match(ID_PATTERN) !== null;
+  return input.match(REFERENCE_PATTERN) !== null;
 }
