@@ -1,8 +1,8 @@
-const PATH_PATTERN = /.*\/(.*)\/(.*)-(lecture|ge)-(.*)\.adoc/gi;
+const PATH_PATTERN = /.*\/(.*)\/(.*)-(lecture|ge|lab)-.*\.adoc/gi;
 
 export interface SectionInfo {
   chapter: string;
-  type: 'ge' | 'lecture' | '';
+  type: 'ge' | 'lecture' | 'lab' | '';
   section: string;
 }
 
@@ -17,7 +17,8 @@ export function sectionInfoFromPath(path: string): SectionInfo | null {
   if (fullPath) {
     const info: SectionInfo = {
       chapter,
-      type: type === 'ge' || type === 'lecture' ? type : '',
+      // TODO cleaner way to handle this
+      type: type === 'ge' || type === 'lecture' || type === 'lab' ? type : '',
       section,
     };
     // console.log('info:', info);
