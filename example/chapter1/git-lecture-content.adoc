@@ -1,0 +1,3 @@
+= A sample section
+
+Sample section with a reference to <<some-section>> that doesn't actually exist (yet)
