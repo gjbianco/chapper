@@ -32,3 +32,11 @@ Deno.test('checks if any IDs exist', () => {
   assertEquals(hasReferences(sampleNoIDs), false);
   assertEquals(hasReferences(sampleWithIDs), true);
 });
+
+Deno.test('does not have a false positive with conflict markers', () => {
+  const sampleWithConflicts =
+    sampleWithIDs +
+    '\nBe sure to remove any conflict markers, which include `<<<<<<<`, `>>>>>>>`, and `=======`.\nsome <<foo-bar-baz>> reference';
+  assertArrayIncludes(findReferences(sampleWithConflicts), ['foo-bar-baz']);
+  assertEquals(findReferences(sampleWithConflicts).length, 3);
+});

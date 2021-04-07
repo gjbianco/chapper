@@ -1,4 +1,4 @@
-const REFERENCE_PATTERN = /<<(.*)>>/gi;
+const REFERENCE_PATTERN = /<<((?:\w+-){2}\w+)>>/gi;
 
 // TODO user proper tsdoc syntax
 /**
