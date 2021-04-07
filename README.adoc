@@ -9,12 +9,8 @@ You can paste the output directly into a tool like https://sketchviz.com/new[Ske
 == Installation
 
 Chapper is built using https://deno.land/[Deno] and TypeScript.
-
 In order to build or run tests, you will need Deno installed (see main site -- it's a single binary!).
-
-One (experimental) feature of Deno is the ability to build JS/TS applications as a single binary, so releases of Chapper should (eventually) be able to run without installing Deno.
-
-=== Development
+Experimentally, Deno has the ability to build JS/TS applications as a single binary, so releases of Chapper should run without dependencies.
 
 With Deno installed and added to your PATH, build Chapper with:
 
@@ -22,18 +18,22 @@ With Deno installed and added to your PATH, build Chapper with:
 deno compile --unstable --allow-read -o chapper src/index.ts
 ```
 
-This will build a single binary named `chapper`.
+This will output a binary named `chapper`.
+Copy this binary to your PATH.
 
 == Usage
 
 Right now, Chapper is very naive in file input handling.
-Ideally, you should run it within the `sg-chapters` directory like so:
+You will need to construct a glob that includes the files chapper should map.
+For example:
 
 ```
-cd path/to/sg-chapters
-chapper **/*.adoc
+chapper path/to/sg-chapters/**/*.adoc
 ```
 
-=== Running tests
+This will run chapper with all AsciiDoc files found beneath the `sg-chapter` directory.
+This is the main way to run chapper.
 
-Chapper includes a number of unit tests, which you can run with `deno test` in the main directory.
+=== Tests
+
+Chapper includes unit tests, which you can run with `deno test`.
