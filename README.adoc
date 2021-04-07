@@ -3,8 +3,8 @@
 This is chapper: `<<(.*)>>`
 
 He finds reference IDs in your AsciiDoc files.
-He uses those to map out how your sections and chapters reference one another.
-Then, you can pipe that map into https://mermaid-js.github.io/mermaid-live-editor[Mermaid.js] to get a graphical representation.
+He uses those to map out how your sections and chapters reference one another and outputs GraphViz syntax.
+You can paste the output directly into a tool like https://sketchviz.com/new[SketchViz] to generate the image.
 
 == Installation
 
@@ -33,12 +33,6 @@ Ideally, you should run it within the `sg-chapters` directory like so:
 cd path/to/sg-chapters
 chapper **/*.adoc
 ```
-
-This will print all references in Mermaid.js syntax.
-Currently, you will likely also get a lot of `WARNING`'s.
-Remove those lines before pasting into Mermaid.js (this workflow will be improved).
-
-You can use the Mermaid.js live editor (linked above) in order to render a diagram of the references.
 
 === Running tests
 
